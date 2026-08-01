@@ -43,20 +43,14 @@ public class DuckEntity extends Animal {
         if (ModList.get().isLoaded("nktfarmsimulator")) {
             try {
                 Class<?> clazz = Class.forName("com.antarktidov.nktfarmsimulator.items.ModItems");
-                // Получаем поле CORN
+
                 Field cornField = clazz.getField("CORN");
-                // Это RegistryObject<Item>
                 Object registryObject = cornField.get(null);
-                // Вызываем get() через reflection
                 Method getMethod = registryObject.getClass().getMethod("get");
                 NktFarmSimulatorMod_CORN = (Item) getMethod.invoke(registryObject);
 
-                Class<?> clazz2 = Class.forName("com.antarktidov.nktfarmsimulator.items.ModItems");
-                // Получаем поле CORN_SEEDS
-                Field cornSeedsField = clazz2.getField("CORN_SEEDS");
-                // Это RegistryObject<Item>
+                Field cornSeedsField = clazz.getField("CORN_SEEDS");
                 Object registryObject2 = cornSeedsField.get(null);
-                // Вызываем get() через reflection
                 Method getMethod2 = registryObject2.getClass().getMethod("get");
                 NktFarmSimulatorMod_CORN_SEEDS = (Item) getMethod2.invoke(registryObject2);
 
