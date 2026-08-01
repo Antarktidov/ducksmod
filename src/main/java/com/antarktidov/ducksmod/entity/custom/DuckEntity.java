@@ -47,8 +47,8 @@ public class DuckEntity extends Animal {
                 Item cornItem = (Item) cornField.get(null);
                 Field cornSeedsField = clazz.getField("CORN_SEEDS");
                 Item cornSeedsItem = (Item) cornField.get(null);
-                NktFarmSimulatorMod_CORN = cornItem;
-                NktFarmSimulatorMod_CORN_SEEDS = cornSeedsItem;
+                this.NktFarmSimulatorMod_CORN = cornItem;
+                this.NktFarmSimulatorMod_CORN_SEEDS = cornSeedsItem;
 
             } catch (ClassNotFoundException e) {
 
