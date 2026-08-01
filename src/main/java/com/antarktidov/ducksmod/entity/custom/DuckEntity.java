@@ -160,12 +160,15 @@ public class DuckEntity extends Animal {
         return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
     }
 
+    /*
+    Нужно для дебага
     @Override
     public void startSeenByPlayer(ServerPlayer pServerPlayer) {
         super.startSeenByPlayer(pServerPlayer);
         // player - это объект ServerPlayer (EntityPlayerMP), который видит сущность
         pServerPlayer.sendSystemMessage(Component.literal("Утка!"));
     }
+     */
 
     @Override
     public void finalizeSpawnChildFromBreeding(ServerLevel pLevel, Animal pAnimal, @Nullable AgeableMob pBaby) {

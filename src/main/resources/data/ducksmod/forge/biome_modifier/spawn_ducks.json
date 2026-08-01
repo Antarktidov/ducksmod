@@ -29,6 +29,6 @@
     "type": "ducksmod:duck",
     "maxCount": 5,
     "minCount": 3,
-    "weight": 500
+    "weight": 25
   }
 }
