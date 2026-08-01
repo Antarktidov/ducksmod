@@ -58,7 +58,7 @@ public class DuckEntity extends Animal {
                 Object registryObject2 = cornSeedsField.get(null);
                 // Вызываем get() через reflection
                 Method getMethod2 = registryObject2.getClass().getMethod("get");
-                NktFarmSimulatorMod_CORN_SEEDS = (Item) getMethod2.invoke(registryObject);
+                NktFarmSimulatorMod_CORN_SEEDS = (Item) getMethod2.invoke(registryObject2);
 
             } catch (ClassNotFoundException e) {
 
