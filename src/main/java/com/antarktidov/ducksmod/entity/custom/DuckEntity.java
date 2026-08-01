@@ -24,6 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class DuckEntity extends Animal {
     private static final EntityDataAccessor<Integer> VARIANT =
@@ -41,20 +42,26 @@ public class DuckEntity extends Animal {
     public void loadFoodFromNktFarmSimulator() {
         if (ModList.get().isLoaded("nktfarmsimulator")) {
             try {
-                Class<?> clazz = Class.forName("com.antarktidov.nktfarmsimulator.ModItems");
-                Object instance = clazz.getDeclaredConstructor().newInstance();
+                Class<?> clazz = Class.forName("com.antarktidov.nktfarmsimulator.items.ModItems");
+                // Получаем поле CORN
                 Field cornField = clazz.getField("CORN");
-                Item cornItem = (Item) cornField.get(null);
+                // Это RegistryObject<Item>
+                Object registryObject = cornField.get(null);
+                // Вызываем get() через reflection
+                Method getMethod = registryObject.getClass().getMethod("get");
+                NktFarmSimulatorMod_CORN = (Item) getMethod.invoke(registryObject);
+
+                // Получаем поле CORN
                 Field cornSeedsField = clazz.getField("CORN_SEEDS");
-                Item cornSeedsItem = (Item) cornField.get(null);
-                this.NktFarmSimulatorMod_CORN = cornItem;
-                this.NktFarmSimulatorMod_CORN_SEEDS = cornSeedsItem;
+                // Это RegistryObject<Item>
+                Object registryObject2 = cornSeedsField.get(null);
+                // Вызываем get() через reflection
+                Method getMethod2 = registryObject2.getClass().getMethod("get");
+                NktFarmSimulatorMod_CORN = (Item) getMethod2.invoke(registryObject);
 
             } catch (ClassNotFoundException e) {
 
             } catch (InvocationTargetException e) {
-                throw new RuntimeException(e);
-            } catch (InstantiationException e) {
                 throw new RuntimeException(e);
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
