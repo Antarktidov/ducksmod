@@ -14,11 +14,16 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.Nullable;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 public class DuckEntity extends Animal {
     private static final EntityDataAccessor<Integer> VARIANT =
@@ -29,13 +34,40 @@ public class DuckEntity extends Animal {
         super(pEntityType, pLevel);
     }
 
+    private void loadFoodFromNktFarmSimulator() {
+        if (ModList.get().isLoaded("nktfarmsimulator")) {
+            try {
+                Class<?> clazz = Class.forName("com.antarktidov.nktfarmsimulator.ModItems");
+                Object instance = clazz.getDeclaredConstructor().newInstance();
+                Field cornField = clazz.getField("CORN");
+                Item cornItem = (Item) cornField.get(null);
+                Field cornSeedsField = clazz.getField("CORN_SEEDS");
+                Item cornSeedsItem = (Item) cornField.get(null);
+
+            } catch (ClassNotFoundException e) {
+
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            } catch (InstantiationException e) {
+                throw new RuntimeException(e);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchFieldException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+    }
+
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
 
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.0));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, stack -> stack.is(Items.MELON_SLICE) || stack.is(Items.GLISTERING_MELON_SLICE), false));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, stack -> stack.is(Items.MELON_SLICE) || stack.is(Items.GLISTERING_MELON_SLICE)  || stack.is(Items.BREAD), false));
 
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25));
 
@@ -50,7 +82,7 @@ public class DuckEntity extends Animal {
 
     @Override
     public boolean isFood(ItemStack pStack) {
-        return pStack.is(Items.MELON_SLICE) || pStack.is(Items.GLISTERING_MELON_SLICE);
+        return pStack.is(Items.MELON_SLICE) || pStack.is(Items.GLISTERING_MELON_SLICE) || pStack.is(Items.BREAD);
     }
 
     @Override
