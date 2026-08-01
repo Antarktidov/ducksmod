@@ -3,10 +3,12 @@ package com.antarktidov.ducksmod.entity.custom;
 import com.antarktidov.ducksmod.entity.ModEntities;
 import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -156,6 +158,13 @@ public class DuckEntity extends Animal {
         DuckVariant variant = Util.getRandom(DuckVariant.values(), this.random);
         this.setVariant(variant);
         return super.finalizeSpawn(pLevel, pDifficulty, pSpawnType, pSpawnGroupData);
+    }
+
+    @Override
+    public void startSeenByPlayer(ServerPlayer pServerPlayer) {
+        super.startSeenByPlayer(pServerPlayer);
+        // player - это объект ServerPlayer (EntityPlayerMP), который видит сущность
+        pServerPlayer.sendSystemMessage(Component.literal("Утка!"));
     }
 
     @Override
