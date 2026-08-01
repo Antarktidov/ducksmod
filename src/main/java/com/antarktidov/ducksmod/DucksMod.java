@@ -2,6 +2,7 @@ package com.antarktidov.ducksmod;
 
 import com.antarktidov.ducksmod.entity.ModEntities;
 import com.antarktidov.ducksmod.entity.clien.DuckRenderer;
+import com.antarktidov.ducksmod.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -47,6 +48,9 @@ public class DucksMod
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+
+        ModItems.register(modEventBus);
+        ModEntities.register(modEventBus);
 
 
         // Register ourselves for server and other game events we are interested in
