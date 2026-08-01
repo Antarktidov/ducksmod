@@ -35,7 +35,7 @@ public class DuckEntity extends Animal {
 
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.0));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, stack -> stack.is(Items.MELON_SLICE), false));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, stack -> stack.is(Items.MELON_SLICE) || stack.is(Items.GLISTERING_MELON_SLICE), false));
 
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25));
 
@@ -50,7 +50,7 @@ public class DuckEntity extends Animal {
 
     @Override
     public boolean isFood(ItemStack pStack) {
-        return pStack.is(Items.MELON_SLICE);
+        return pStack.is(Items.MELON_SLICE) || pStack.is(Items.GLISTERING_MELON_SLICE);
     }
 
     @Override
