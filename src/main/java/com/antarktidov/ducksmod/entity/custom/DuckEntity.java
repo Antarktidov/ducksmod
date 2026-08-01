@@ -30,11 +30,15 @@ public class DuckEntity extends Animal {
             SynchedEntityData.defineId(DuckEntity.class, EntityDataSerializers.INT);
     public final AnimationState idleAnimationState = new AnimationState();
     private int idleAnimationTimeout = 0;
+
+    public Item NktFarmSimulatorMod_CORN;
+    public Item NktFarmSimulatorMod_CORN_SEEDS;
     public DuckEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        loadFoodFromNktFarmSimulator();
     }
 
-    private void loadFoodFromNktFarmSimulator() {
+    public void loadFoodFromNktFarmSimulator() {
         if (ModList.get().isLoaded("nktfarmsimulator")) {
             try {
                 Class<?> clazz = Class.forName("com.antarktidov.nktfarmsimulator.ModItems");
@@ -43,6 +47,8 @@ public class DuckEntity extends Animal {
                 Item cornItem = (Item) cornField.get(null);
                 Field cornSeedsField = clazz.getField("CORN_SEEDS");
                 Item cornSeedsItem = (Item) cornField.get(null);
+                NktFarmSimulatorMod_CORN = cornItem;
+                NktFarmSimulatorMod_CORN_SEEDS = cornSeedsItem;
 
             } catch (ClassNotFoundException e) {
 
@@ -67,7 +73,9 @@ public class DuckEntity extends Animal {
 
         this.goalSelector.addGoal(1, new PanicGoal(this, 2.0));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0));
-        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, stack -> stack.is(Items.MELON_SLICE) || stack.is(Items.GLISTERING_MELON_SLICE)  || stack.is(Items.BREAD), false));
+        this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, stack ->
+                stack.is(Items.MELON_SLICE) || stack.is(Items.GLISTERING_MELON_SLICE)  || stack.is(Items.BREAD)
+                        || stack.is(NktFarmSimulatorMod_CORN) || stack.is(NktFarmSimulatorMod_CORN_SEEDS), false));
 
         this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25));
 
@@ -82,7 +90,8 @@ public class DuckEntity extends Animal {
 
     @Override
     public boolean isFood(ItemStack pStack) {
-        return pStack.is(Items.MELON_SLICE) || pStack.is(Items.GLISTERING_MELON_SLICE) || pStack.is(Items.BREAD);
+        return pStack.is(Items.MELON_SLICE) || pStack.is(Items.GLISTERING_MELON_SLICE) || pStack.is(Items.BREAD)
+                || pStack.is(NktFarmSimulatorMod_CORN) || pStack.is(NktFarmSimulatorMod_CORN_SEEDS);
     }
 
     @Override
