@@ -1,7 +1,10 @@
 package com.antarktidov.ducksmod;
 
+import com.antarktidov.ducksmod.entity.ModEntities;
+import com.antarktidov.ducksmod.entity.clien.DuckRenderer;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
@@ -81,7 +84,7 @@ public class DucksMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-
+            EntityRenderers.register(ModEntities.DUCK.get(), DuckRenderer::new);
         }
     }
 }
