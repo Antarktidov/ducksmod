@@ -4,6 +4,7 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'org.jetbrains.kotlin.jvm' version '2.0.21'
 }
 
 version = mod_version
@@ -196,6 +197,16 @@ publishing {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    dependsOn tasks.named('compileKotlin')
+    dependsOn tasks.named('processResources')
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = '21'
+    }
+    destinationDirectory.set(layout.buildDirectory.dir("sourcesSets/main"))
+    dependsOn tasks.named('processResources')
 }
 
 eclipse {
