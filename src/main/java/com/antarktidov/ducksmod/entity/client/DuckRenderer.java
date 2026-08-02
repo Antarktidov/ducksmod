@@ -1,4 +1,4 @@
-package com.antarktidov.ducksmod.entity.clien;
+package com.antarktidov.ducksmod.entity.client;
 
 import com.antarktidov.ducksmod.DucksMod;
 import com.antarktidov.ducksmod.entity.custom.DuckEntity;
@@ -24,6 +24,8 @@ public class DuckRenderer  extends MobRenderer<DuckEntity, DuckModel<DuckEntity>
                         ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/female_mallard.png"));
                 map.put(DuckVariant.MUSCOVY,
                         ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/muscovy_duck.png"));
+                map.put(DuckVariant.MANDARIN,
+                        ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/mandarin_duck.png"));
 
             });
     public DuckRenderer(EntityRendererProvider.Context pContext) {

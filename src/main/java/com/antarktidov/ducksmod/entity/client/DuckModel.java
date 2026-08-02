@@ -1,4 +1,4 @@
-package com.antarktidov.ducksmod.entity.clien;
+package com.antarktidov.ducksmod.entity.client;
 
 import com.antarktidov.ducksmod.DucksMod;
 import com.antarktidov.ducksmod.entity.custom.DuckEntity;

@@ -2,7 +2,7 @@ package com.antarktidov.ducksmod.entity.event;
 
 import com.antarktidov.ducksmod.DucksMod;
 import com.antarktidov.ducksmod.entity.ModEntities;
-import com.antarktidov.ducksmod.entity.clien.DuckModel;
+import com.antarktidov.ducksmod.entity.client.DuckModel;
 import com.antarktidov.ducksmod.entity.custom.DuckEntity;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
