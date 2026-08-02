@@ -1,4 +1,4 @@
-package com.antarktidov.ducksmod.entity.clien;
+package com.antarktidov.ducksmod.entity.client;
 
 import net.minecraft.client.animation.AnimationChannel;
 import net.minecraft.client.animation.AnimationDefinition;
