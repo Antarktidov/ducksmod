@@ -30,6 +30,23 @@ public class DuckRenderer  extends MobRenderer<DuckEntity, DuckModel<DuckEntity>
                         ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/cayuga.png"));
 
             });
+
+    private static final Map<DuckVariant, ResourceLocation> BABY_DUCK_LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(DuckVariant.class), map -> {
+                map.put(DuckVariant.WHITE,
+                        ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/baby_duck.png"));
+                map.put(DuckVariant.MALE_MALLARD,
+                        ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/baby_duck.png"));
+                map.put(DuckVariant.FEMALE_MALLARD,
+                        ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/baby_duck.png"));
+                map.put(DuckVariant.MUSCOVY,
+                        ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/baby_duck.png"));
+                map.put(DuckVariant.MANDARIN,
+                        ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/baby_duck.png"));
+                map.put(DuckVariant.CAYUGA,
+                        ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/cayuga.png"));
+
+            });
     public DuckRenderer(EntityRendererProvider.Context pContext) {
         super(pContext, new DuckModel<>(pContext.bakeLayer(DuckModel.LAYER_LOCATION)), 0.85f);
     }
@@ -37,7 +54,7 @@ public class DuckRenderer  extends MobRenderer<DuckEntity, DuckModel<DuckEntity>
     @Override
     public ResourceLocation getTextureLocation(DuckEntity entity) {
         if (entity.isBaby()) {
-            return ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/baby_duck.png");
+            return BABY_DUCK_LOCATION_BY_VARIANT.get(entity.getVariant());
         }
         return LOCATION_BY_VARIANT.get(entity.getVariant());
     }
