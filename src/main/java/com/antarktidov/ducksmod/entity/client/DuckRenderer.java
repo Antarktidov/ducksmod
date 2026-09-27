@@ -26,6 +26,8 @@ public class DuckRenderer  extends MobRenderer<DuckEntity, DuckModel<DuckEntity>
                         ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/muscovy_duck.png"));
                 map.put(DuckVariant.MANDARIN,
                         ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/mandarin_duck.png"));
+                map.put(DuckVariant.CAYUGA,
+                        ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/cayuga.png"));
 
             });
     public DuckRenderer(EntityRendererProvider.Context pContext) {
