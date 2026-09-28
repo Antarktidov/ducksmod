@@ -24,6 +24,8 @@ public class DuckRenderer  extends MobRenderer<DuckEntity, DuckModel<DuckEntity>
                         ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/female_mallard.png"));
                 map.put(DuckVariant.MUSCOVY,
                         ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/muscovy_duck.png"));
+                map.put(DuckVariant.MUSCOVY_2,
+                        ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/muscovy_duck2.png"));
                 map.put(DuckVariant.MANDARIN,
                         ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/mandarin_duck.png"));
                 map.put(DuckVariant.CAYUGA,
@@ -40,6 +42,8 @@ public class DuckRenderer  extends MobRenderer<DuckEntity, DuckModel<DuckEntity>
                 map.put(DuckVariant.FEMALE_MALLARD,
                         ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/baby_duck.png"));
                 map.put(DuckVariant.MUSCOVY,
+                        ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/baby_duck.png"));
+                map.put(DuckVariant.MUSCOVY_2,
                         ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/baby_duck.png"));
                 map.put(DuckVariant.MANDARIN,
                         ResourceLocation.fromNamespaceAndPath(DucksMod.MOD_ID, "textures/entity/duck/baby_duck.png"));

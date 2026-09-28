@@ -8,8 +8,10 @@ public enum DuckVariant {
     MALE_MALLARD(1),
     FEMALE_MALLARD(2),
     MUSCOVY(3),
-    MANDARIN(4),
-    CAYUGA(5);
+
+    MUSCOVY_2(4),
+    MANDARIN(5),
+    CAYUGA(6);
     //BABY(5);
     
     private static final DuckVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator.
