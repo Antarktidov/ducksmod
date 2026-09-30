@@ -172,8 +172,7 @@ public class DuckEntity extends Animal {
 
     @Override
     public void finalizeSpawnChildFromBreeding(ServerLevel pLevel, Animal pAnimal, @Nullable AgeableMob pBaby) {
-        DuckVariant variant = Util.getRandom(DuckVariant.values(), this.random);
-        ((DuckEntity) pBaby).setVariant(variant);
+        ((DuckEntity) pBaby).setVariant(((DuckEntity)pAnimal).getVariant());
         super.finalizeSpawnChildFromBreeding(pLevel, pAnimal, pBaby);
     }
 }
