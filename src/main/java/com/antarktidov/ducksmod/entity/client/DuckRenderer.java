@@ -74,4 +74,9 @@ public class DuckRenderer  extends MobRenderer<DuckEntity, DuckModel<DuckEntity>
 
         super.render(pEntity, pEntityYaw, pPartialTicks, pPoseStack, pBuffer, pPackedLight);
     }
+
+    @Override
+    protected float getShadowRadius(DuckEntity pEntity) {
+        return 0.3f;
+    }
 }
