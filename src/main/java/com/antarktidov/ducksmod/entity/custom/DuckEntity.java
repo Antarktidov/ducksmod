@@ -21,6 +21,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.Nullable;
 
@@ -175,5 +177,13 @@ public class DuckEntity extends Animal {
     public void finalizeSpawnChildFromBreeding(ServerLevel pLevel, Animal pAnimal, @Nullable AgeableMob pBaby) {
         ((DuckEntity) pBaby).setVariant(((DuckEntity)pAnimal).getVariant());
         super.finalizeSpawnChildFromBreeding(pLevel, pAnimal, pBaby);
+    }
+
+    @Override
+    public boolean canDrownInFluidType(FluidType type) {
+        if (type == Fluids.WATER.getFluidType()) {
+            return false;
+        }
+        return super.canDrownInFluidType(type);
     }
 }
