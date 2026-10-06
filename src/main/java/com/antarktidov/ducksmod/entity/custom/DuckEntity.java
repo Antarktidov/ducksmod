@@ -81,9 +81,10 @@ public class DuckEntity extends Animal {
                 stack.is(Items.MELON_SLICE) || stack.is(Items.GLISTERING_MELON_SLICE)  || stack.is(Items.BREAD)
                         || stack.is(NktFarmSimulatorMod_CORN) || stack.is(NktFarmSimulatorMod_CORN_SEEDS), false));
 
-        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25));
 
-        //this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
+        this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.25));
+        this.goalSelector.addGoal(5, new RandomSwimmingGoal(this, 1.0, 1));
+        this.goalSelector.addGoal(5, new RandomStrollGoal(this, 1.0));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
     }
