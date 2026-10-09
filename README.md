@@ -2,7 +2,7 @@
 
 ![](https://raw.githubusercontent.com/Antarktidov/ducksmod/refs/heads/readme-and-license/readme-images/male_mallard.png)
 
-Данный мод добавляет следующие разновоиднсоти уток:
+Данный мод добавляет следующие разновидности уток:
 
 * белая утка неизвестной породы
 * кряква (самец и самка)
